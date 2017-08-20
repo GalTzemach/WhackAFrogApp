@@ -14,6 +14,14 @@
 		D34415BA1F49A8790009F5A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34415B81F49A8790009F5A0 /* LaunchScreen.storyboard */; };
 		D34415C51F49A8790009F5A0 /* WhackAFrogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34415C41F49A8790009F5A0 /* WhackAFrogTests.swift */; };
 		D34415D01F49A8790009F5A0 /* WhackAFrogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34415CF1F49A8790009F5A0 /* WhackAFrogUITests.swift */; };
+		D34415DE1F49B7810009F5A0 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34415DD1F49B7810009F5A0 /* GameLogic.swift */; };
+		D34415E01F49B8B60009F5A0 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34415DF1F49B8B60009F5A0 /* Tile.swift */; };
+		D34415E21F49B9C40009F5A0 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34415E11F49B9C40009F5A0 /* GameBoard.swift */; };
+		D3BE44451F49C564000D8A08 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BE44441F49C564000D8A08 /* HelpViewController.swift */; };
+		D3BE44471F49C7F0000D8A08 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BE44461F49C7F0000D8A08 /* MainViewController.swift */; };
+		D3BE44491F49CC2F000D8A08 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BE44481F49CC2F000D8A08 /* GameViewController.swift */; };
+		D3BE444B1F49D607000D8A08 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BE444A1F49D607000D8A08 /* GameOverViewController.swift */; };
+		D3BE444D1F49F3AD000D8A08 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BE444C1F49F3AD000D8A08 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +55,14 @@
 		D34415CB1F49A8790009F5A0 /* WhackAFrogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhackAFrogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34415CF1F49A8790009F5A0 /* WhackAFrogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackAFrogUITests.swift; sourceTree = "<group>"; };
 		D34415D11F49A8790009F5A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D34415DD1F49B7810009F5A0 /* GameLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameLogic.swift; path = ../GameLogic.swift; sourceTree = "<group>"; };
+		D34415DF1F49B8B60009F5A0 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		D34415E11F49B9C40009F5A0 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
+		D3BE44441F49C564000D8A08 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		D3BE44461F49C7F0000D8A08 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D3BE44481F49CC2F000D8A08 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D3BE444A1F49D607000D8A08 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		D3BE444C1F49F3AD000D8A08 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +113,15 @@
 		D34415AE1F49A8790009F5A0 /* WhackAFrog */ = {
 			isa = PBXGroup;
 			children = (
+				D3BE443F1F49BFB2000D8A08 /* ViewControllers */,
+				D3BE443E1F49BF4D000D8A08 /* BL */,
 				D34415AF1F49A8790009F5A0 /* AppDelegate.swift */,
 				D34415B11F49A8790009F5A0 /* ViewController.swift */,
+				D3BE44461F49C7F0000D8A08 /* MainViewController.swift */,
 				D34415B31F49A8790009F5A0 /* Main.storyboard */,
+				D3BE444C1F49F3AD000D8A08 /* CustomCell.swift */,
+				D3BE444A1F49D607000D8A08 /* GameOverViewController.swift */,
+				D3BE44481F49CC2F000D8A08 /* GameViewController.swift */,
 				D34415B61F49A8790009F5A0 /* Assets.xcassets */,
 				D34415B81F49A8790009F5A0 /* LaunchScreen.storyboard */,
 				D34415BB1F49A8790009F5A0 /* Info.plist */,
@@ -123,6 +145,24 @@
 				D34415D11F49A8790009F5A0 /* Info.plist */,
 			);
 			path = WhackAFrogUITests;
+			sourceTree = "<group>";
+		};
+		D3BE443E1F49BF4D000D8A08 /* BL */ = {
+			isa = PBXGroup;
+			children = (
+				D34415DD1F49B7810009F5A0 /* GameLogic.swift */,
+				D34415E11F49B9C40009F5A0 /* GameBoard.swift */,
+				D34415DF1F49B8B60009F5A0 /* Tile.swift */,
+			);
+			name = BL;
+			sourceTree = "<group>";
+		};
+		D3BE443F1F49BFB2000D8A08 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D3BE44441F49C564000D8A08 /* HelpViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +299,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3BE44471F49C7F0000D8A08 /* MainViewController.swift in Sources */,
+				D34415DE1F49B7810009F5A0 /* GameLogic.swift in Sources */,
+				D3BE444D1F49F3AD000D8A08 /* CustomCell.swift in Sources */,
+				D3BE44451F49C564000D8A08 /* HelpViewController.swift in Sources */,
 				D34415B21F49A8790009F5A0 /* ViewController.swift in Sources */,
+				D3BE44491F49CC2F000D8A08 /* GameViewController.swift in Sources */,
+				D34415E21F49B9C40009F5A0 /* GameBoard.swift in Sources */,
 				D34415B01F49A8790009F5A0 /* AppDelegate.swift in Sources */,
+				D34415E01F49B8B60009F5A0 /* Tile.swift in Sources */,
+				D3BE444B1F49D607000D8A08 /* GameOverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +555,7 @@
 				D34415D61F49A8790009F5A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D34415D71F49A8790009F5A0 /* Build configuration list for PBXNativeTarget "WhackAFrogTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +564,7 @@
 				D34415D91F49A8790009F5A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D34415DA1F49A8790009F5A0 /* Build configuration list for PBXNativeTarget "WhackAFrogUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +573,7 @@
 				D34415DC1F49A8790009F5A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
