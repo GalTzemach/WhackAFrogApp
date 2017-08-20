@@ -10,7 +10,7 @@ import Foundation
 
 class GameBoard{
     
-    //    var tailMatrix: [[Tile]]
+    // var tailMatrix: [[Tile]]
     let maxTotalVisible: Int
     var currentTotalVisible: Int
     
