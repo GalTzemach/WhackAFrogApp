@@ -10,18 +10,26 @@ import Foundation
 
 class GameLogic {
     
-    
-//    var timer: Timer
-//    var score:Int = 0
-//    let life:Int = 0 // create const with number 3
-//    //var type:eType /// create enum
-//    var gameBoard: GameBoard
-//    
-//    func clickOnTile(int: i, int: j) {
-//        
-//    }
+    var timer: Timer!
+    var gameBoard: GameBoard!
+    var score: Int
+    var life: Int
+    enum eType {
+        case good, bad, life
+    }
     
     
+    init() {
+        // other init of timer & gameBoard
+        self.timer = Timer()
+        self.gameBoard = GameBoard()
+        self.score = 0
+        self.life = 3
+    }
+    
+    func clickOnTile(i: Int, j: Int) {
+        
+    }
     
     
     

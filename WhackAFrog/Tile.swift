@@ -8,26 +8,29 @@
 
 import Foundation
 
-//class Tile {
-//    
-//    var timer: Timer
-//    var isVisible: Bool
-//    //var type: eType /// create enum
-//    
-//    
-//    func visible() {
-//    
-//    }
-//    
-//    func invisible() {
-//        
-//    }
-//
-//    func tileClicked() {
-//        
-//    }
-//    
-//    
-//}
-
-
+class Tile {
+    
+    var timer: Timer
+    var isVisible: Bool
+    enum eType {
+        case good, bad, life
+    }
+    
+    init() {
+        self.isVisible = false
+        self.timer = Timer()
+    }
+    
+    func visible() {
+        
+    }
+    
+    func invisible() {
+        
+    }
+    
+    func tileClicked() {
+        
+    }
+    
+}
