@@ -44,7 +44,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func runTimedCode() {
     
-        print("time out...")
+        print("time out....")
     
     }
     
