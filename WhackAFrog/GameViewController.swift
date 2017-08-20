@@ -15,6 +15,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var timer: Timer
     var images: [String] = ["good", "bad", "life"]
     
     
@@ -50,8 +51,8 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return numOfRow * numOfCol
-        ///return images.count * 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,9 +62,12 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 1
         
-        cell.myImage.image = UIImage(named: images[indexPath.row % 3])
         
-        print(indexPath.row)
+        // random number in order to choose image
+        let randomNum: Int = Int(arc4random_uniform(3)) // range is 0 to 2
+        cell.myImage.image = UIImage(named: images[randomNum])
+        
+        /// print(indexPath.row)
 
         return cell
     }
