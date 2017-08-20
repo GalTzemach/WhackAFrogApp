@@ -15,7 +15,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var timer: Timer
+    var timer: Timer!
     var images: [String] = ["good", "bad", "life"]
     
     
@@ -36,6 +36,21 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+    }
+    
+    func runTimedCode() {
+    
+        print("time out")
+    
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("timer invalitade")
+        timer.invalidate()
     }
 
     override func didReceiveMemoryWarning() {
