@@ -36,20 +36,20 @@ class Tile {
     func visible(type: eType) {
 
         typeOfTile = type
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(invisible), userInfo: nil, repeats: false)
+        /// timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(invisible), userInfo: nil, repeats: false)
         
         self.isVisible = true
     }
     
     @objc func invisible() {
         
-        print("item became invisible after timer")
+        /// print("item became invisible after timer")
         
         typeOfTile = eType.blank
         isVisible = false
         timer.invalidate()
         
-       delegate?.changeTileToInvisible(index: 3)
+        delegate?.changeTileToInvisible(index: 3)
     }
     
     func tileClicked() {

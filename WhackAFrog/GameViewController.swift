@@ -28,19 +28,22 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var score: Int = 0
     var images: [String] = ["good", "bad", "life"]
     
-    
+    var totalLife: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set background
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
         let screenWidth: Int = Int(UIScreen.main.bounds.width)
-        let itemSize = screenWidth / numOfCol - (30 + 40 / numOfCol) // 4 element each row
+        let itemSize = screenWidth / numOfCol - (20 + 40 / numOfCol) // 4 element each row
     
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20)
         layout.itemSize = CGSize(width: itemSize, height: itemSize)
-        layout.minimumInteritemSpacing = 30
-        layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 20
+        layout.minimumLineSpacing = 20
         
         collectionView.collectionViewLayout = layout
         
@@ -54,7 +57,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerReady), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(timerReady), userInfo: nil, repeats: true)
         
         
     }
@@ -75,18 +78,21 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         /// print("GameViewController: timer ready")
         
         currentTime += 1
-        timeLabel.text = String(currentTime)
+        timeLabel.text = String(currentTime / 4)
         
         createNewTile()
         
         // end game
-        if currentTime == durationGame {
+        if currentTime / 4 == durationGame {
             won();
         }
     }
     
     
     func createNewTile() {
+        
+        /// print("create new tile :: gameLogic?.gameBoard.currentTotalVisible = ", gameLogic!.gameBoard.currentTotalVisible)
+        print("currentTotalVisible = ", gameLogic!.gameBoard.currentTotalVisible)
         
         // choose tile
         let randRow: Int = Int(arc4random_uniform(UInt32(numOfRow)))
@@ -120,7 +126,8 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         gameLogic?.gameBoard.currentBad += 1
                     }
                 case 2:
-                    if (gameLogic?.gameBoard.currentLife)! < (gameLogic?.gameBoard.maxLife)!{
+                    totalLife += 1
+                    if (gameLogic?.gameBoard.currentLife)! < (gameLogic?.gameBoard.maxCurrentLife)! && (totalLife <= (gameLogic?.gameBoard.maxLife)!){
                         gameLogic?.gameBoard.tailMatrix[randRow * numOfCol + randCol].visible(type: eType.life)
                         cell.myImage.image = UIImage(named: images[2])
                         
@@ -177,9 +184,8 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCell
         
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 1
-        
+        /// cell.layer.borderColor = UIColor.lightGray.cgColor
+        /// cell.layer.borderWidth = 1
         
         ///  random number in order to choose image
         /// let randomNum: Int = Int(arc4random_uniform(3)) // range is 0 to 2
@@ -192,6 +198,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // perform when any item clicked
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         print("Item pressed is: " , indexPath.row)
         
         ///let cell : CustomCell = collectionView.cellForItem(at: indexPath) as! CustomCell
@@ -231,6 +238,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             cell.myImage.image = nil
             gameLogic?.gameBoard.tailMatrix[indexPath.row].invisible()
+            gameLogic?.gameBoard.currentTotalVisible -= 1
         }
     }
 }

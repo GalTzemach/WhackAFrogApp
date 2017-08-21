@@ -10,6 +10,8 @@ import Foundation
 
 class GameBoard{
     
+    let maxTile: Int = 10
+    
     var tailMatrix = [Tile]()
     let maxTotalVisible: Int
     var currentTotalVisible: Int
@@ -21,26 +23,27 @@ class GameBoard{
     var currentBad: Int
     
     let maxLife: Int
+    var maxCurrentLife: Int
     var currentLife: Int
     
     init() {
-        print("GameBoard.init() call")
+        /// print("GameBoard.init() call")
         
         for _ in 0...20{
             tailMatrix.append(Tile.init())
         }
         
-        maxTotalVisible = 10 //(count(tailMatrix) * count(tailMatrix[0])) / 0.5
+        maxTotalVisible = maxTile
+        maxGood = maxTile / 2
+        maxBad = maxTile / 2
+        maxLife = 3
         
-        maxGood = maxTotalVisible - 3
-        maxBad = maxGood - 3
-        maxLife = 1
+        maxCurrentLife = 1
         
         currentTotalVisible = 0
         currentGood = 0
         currentBad = 0
         currentLife = 0
-        
         
     }
     

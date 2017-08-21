@@ -16,6 +16,9 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set background
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
         scoreLabel.text = String.init(stringInterpolationSegment: score!)
     }
 
