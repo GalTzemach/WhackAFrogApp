@@ -10,10 +10,13 @@ import UIKit
 
 class GameOverViewController: UIViewController {
 
+    @IBOutlet weak var scoreLabel: UILabel!
+    var score: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        scoreLabel.text = String.init(stringInterpolationSegment: score!)
     }
 
     override func didReceiveMemoryWarning() {

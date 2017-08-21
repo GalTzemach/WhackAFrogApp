@@ -8,25 +8,48 @@
 
 import Foundation
 
+enum eType {
+    case blank, good, bad, life
+}
+
+protocol TileInvisibleProtocol: class {
+    func changeTileToInvisible(index: Int)
+}
+
 class Tile {
     
+    weak var delegate: TileInvisibleProtocol?
     var timer: Timer
     var isVisible: Bool
-    enum eType {
-        case good, bad, life
-    }
+    var typeOfTile: eType
+    
+    
     
     init() {
+        //print("GameBoard.init() call")
+        
         self.isVisible = false
         self.timer = Timer()
+        self.typeOfTile = eType.blank
     }
     
-    func visible() {
+    func visible(type: eType) {
+
+        typeOfTile = type
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(invisible), userInfo: nil, repeats: false)
         
+        self.isVisible = true
     }
     
-    func invisible() {
+    @objc func invisible() {
         
+        print("item became invisible after timer")
+        
+        typeOfTile = eType.blank
+        isVisible = false
+        timer.invalidate()
+        
+       delegate?.changeTileToInvisible(index: 3)
     }
     
     func tileClicked() {

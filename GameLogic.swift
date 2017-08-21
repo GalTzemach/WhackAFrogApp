@@ -10,7 +10,7 @@ import Foundation
 
 class GameLogic {
     
-    var timer: Timer!
+    //var mainTimer: Timer
     var gameBoard: GameBoard!
     var score: Int
     var life: Int
@@ -18,13 +18,24 @@ class GameLogic {
         case good, bad, life
     }
     
-    
     init() {
+        print("GameLogic.init() call")
+        
         // other init of timer & gameBoard
-        self.timer = Timer()
+        //self.mainTimer = Timer()
         self.gameBoard = GameBoard()
         self.score = 0
         self.life = 3
+        
+        
+    }
+    
+    func startTimer() {
+        //self.mainTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerReady), userInfo: nil, repeats: true)
+    }
+    
+    @objc func timerReady() {
+        print("timer++")
     }
     
     func clickOnTile(i: Int, j: Int) {
