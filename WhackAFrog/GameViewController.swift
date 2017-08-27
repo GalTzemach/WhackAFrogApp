@@ -9,7 +9,7 @@
 //for git
 import UIKit
 
-class GameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class GameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DataModelDelegate {
 
     // outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -29,6 +29,40 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var images: [String] = ["good", "bad", "life"]
     
     var totalLife: Int = 0
+    
+    
+    func didRecieveDataUpdate(data: Int) {
+        
+        deleteTile(index: data)
+    }
+    
+    func deleteTile(index: Int) {
+        /// print("delete index: " , index)
+        
+        let cell : CustomCell = collectionView.cellForItem(at: [0, index]) as! CustomCell
+        
+        switch gameLogic?.gameBoard.tailMatrix[index].typeOfTile {
+        case eType.good?:
+            
+            gameLogic?.gameBoard.currentGood -= 1
+            
+        case eType.bad?:
+            
+            gameLogic?.gameBoard.currentBad -= 1
+            
+        case eType.life?:
+            
+            
+            gameLogic?.gameBoard.currentLife -= 1
+            
+        default:
+            break
+        }
+        
+        cell.myImage.image = nil
+        gameLogic?.gameBoard.tailMatrix[index].invisible()
+        gameLogic?.gameBoard.currentTotalVisible -= 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,12 +124,15 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // choose tile
         let randRow: Int = Int(arc4random_uniform(UInt32(numOfRow)))
         let randCol: Int = Int(arc4random_uniform(UInt32(numOfCol)))
+        let numOfCell: Int = randRow * numOfCol + randCol
         
-        let idx: IndexPath = [0, randRow * numOfCol + randCol]
+        let idx: IndexPath = [0, numOfCell]
         
         let cell : CustomCell = collectionView.cellForItem(at: idx) as! CustomCell
         
-        if gameLogic?.gameBoard.tailMatrix[randRow * numOfCol + randCol].isVisible == false {
+        if gameLogic?.gameBoard.tailMatrix[numOfCell].isVisible == false {
+            
+            print("create index: " , numOfCell)
             
             let randIndex: Int = Int(arc4random_uniform(UInt32(images.count)))
             
@@ -104,28 +141,40 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 switch randIndex {
                 case 0:
                     if (gameLogic?.gameBoard.currentGood)! < (gameLogic?.gameBoard.maxGood)!{
-                        gameLogic?.gameBoard.tailMatrix[randRow * numOfCol + randCol].visible(type: eType.good)
+                        gameLogic?.gameBoard.tailMatrix[numOfCell].visible(type: eType.good, location: numOfCell)
                         cell.myImage.image = UIImage(named: images[0])
                         
                         gameLogic?.gameBoard.currentTotalVisible += 1
                         gameLogic?.gameBoard.currentGood += 1
+                        
+                        /// 
+                        gameLogic?.gameBoard.tailMatrix[numOfCell].delegate = self
+                        ///gameLogic?.gameBoard.tailMatrix[numOfCell].requestData()
+                        
                     }
                 case 1:
                     if (gameLogic?.gameBoard.currentBad)! < (gameLogic?.gameBoard.maxBad)!{
-                        gameLogic?.gameBoard.tailMatrix[randRow * numOfCol + randCol].visible(type: eType.bad)
+                        gameLogic?.gameBoard.tailMatrix[numOfCell].visible(type: eType.bad, location: numOfCell)
                         cell.myImage.image = UIImage(named: images[1])
                         
                         gameLogic?.gameBoard.currentTotalVisible += 1
                         gameLogic?.gameBoard.currentBad += 1
+                        
+                        ///
+                        gameLogic?.gameBoard.tailMatrix[numOfCell].delegate = self
+                        ///gameLogic?.gameBoard.tailMatrix[numOfCell].requestData()
                     }
                 case 2:
-                    totalLife += 1
-                    if (gameLogic?.gameBoard.currentLife)! < (gameLogic?.gameBoard.maxCurrentLife)! && (totalLife <= (gameLogic?.gameBoard.maxLife)!){
-                        gameLogic?.gameBoard.tailMatrix[randRow * numOfCol + randCol].visible(type: eType.life)
+                    if (gameLogic?.gameBoard.currentLife)! < (gameLogic?.gameBoard.maxCurrentLife)! {
+                        gameLogic?.gameBoard.tailMatrix[numOfCell].visible(type: eType.life, location: numOfCell)
                         cell.myImage.image = UIImage(named: images[2])
                         
                         gameLogic?.gameBoard.currentTotalVisible += 1
                         gameLogic?.gameBoard.currentLife += 1
+                        
+                        ///
+                        gameLogic?.gameBoard.tailMatrix[numOfCell].delegate = self
+                        ///gameLogic?.gameBoard.tailMatrix[numOfCell].requestData()
                     }
                 default:
                     break

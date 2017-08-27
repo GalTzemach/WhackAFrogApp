@@ -22,7 +22,6 @@ class GameBoard{
     let maxBad: Int
     var currentBad: Int
     
-    let maxLife: Int
     var maxCurrentLife: Int
     var currentLife: Int
     
@@ -36,7 +35,6 @@ class GameBoard{
         maxTotalVisible = maxTile
         maxGood = maxTile / 2
         maxBad = maxTile / 2
-        maxLife = 3
         
         maxCurrentLife = 1
         
