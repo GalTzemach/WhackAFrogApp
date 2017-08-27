@@ -9,7 +9,7 @@
 //for git
 import UIKit
 
-class GameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, TileInvisibleProtocol {
+class GameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -57,9 +57,8 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(timerReady), userInfo: nil, repeats: true)
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,15 +66,9 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let vc = segue.destination as! GameOverViewController
             vc.score = score
         }
-        
-        if let nav = segue.destination as? UINavigationController, let tile = nav.topViewController as? Tile {
-            tile.delegate = self
-        }
     }
     
     func timerReady() {
-        
-        /// print("GameViewController: timer ready")
         
         currentTime += 1
         timeLabel.text = String(currentTime / 4)
@@ -92,7 +85,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func createNewTile() {
         
         /// print("create new tile :: gameLogic?.gameBoard.currentTotalVisible = ", gameLogic!.gameBoard.currentTotalVisible)
-        print("currentTotalVisible = ", gameLogic!.gameBoard.currentTotalVisible)
+        /// print("currentTotalVisible = ", gameLogic!.gameBoard.currentTotalVisible)
         
         // choose tile
         let randRow: Int = Int(arc4random_uniform(UInt32(numOfRow)))
@@ -141,21 +134,11 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func changeTileToInvisible(index: Int) {
-        print("by delegate:" , index)
-    }
     
     func won() {
         
-        
         performSegue(withIdentifier: "gameToGameOverSegue", sender: self)
-
     }
-    
-//    override func prepare(for segue: , sender: self) {
-//        if let GameOverViewController = segue.des
-//       
-//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         print("timer invalitade")
@@ -168,7 +151,6 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // Actions
-    
     @IBAction func backClicked(_ sender: Any) {
         performSegue(withIdentifier: "gameToMainSegue", sender: self)
     }
@@ -186,12 +168,6 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         /// cell.layer.borderColor = UIColor.lightGray.cgColor
         /// cell.layer.borderWidth = 1
-        
-        ///  random number in order to choose image
-        /// let randomNum: Int = Int(arc4random_uniform(3)) // range is 0 to 2
-        /// cell.myImage.image = UIImage(named: images[randomNum])
-        
-        /// print(indexPath)
 
         return cell
     }
@@ -200,8 +176,6 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         print("Item pressed is: " , indexPath.row)
-        
-        ///let cell : CustomCell = collectionView.cellForItem(at: indexPath) as! CustomCell
         
         if gameLogic?.gameBoard.tailMatrix[indexPath.row].isVisible == true {
             
@@ -213,7 +187,6 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 score += 1
                 scoreLabel.text = String(score)
                 
-                gameLogic?.gameBoard.tailMatrix[indexPath.row].invisible()
                 gameLogic?.gameBoard.currentGood -= 1
                 
             case eType.bad?:
