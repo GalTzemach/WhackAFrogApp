@@ -6,10 +6,9 @@
 //  Copyright © 2017 Tal Zemah. All rights reserved.
 //
 
-//for git
 import UIKit
 
-class GameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DataModelDelegate {
+class GameViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, TileTimeUp {
 
     // outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -19,42 +18,34 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let numOfRow: Int = 5
     let numOfCol: Int = 4
-    let durationGame: Int = 20 /// change to 60
+    let durationGame: Int = 30
     
-    weak var timer: Timer? /// weak is nessesary ?
+    weak var timer: Timer? /// weak ?
     var gameLogic: GameLogic?
     var currentTime: Int = 0
-    
     var score: Int = 0
-    var images: [String] = ["good", "bad", "life"]
-    
     var totalLife: Int = 0
     
+    let images: [String] = ["good", "bad", "life"]
     
-    func didRecieveDataUpdate(data: Int) {
+    
+    func tileDisappeare(data: Int) {
         
         deleteTile(index: data)
     }
     
     func deleteTile(index: Int) {
-        /// print("delete index: " , index)
         
         let cell : CustomCell = collectionView.cellForItem(at: [0, index]) as! CustomCell
         
         switch gameLogic?.gameBoard.tailMatrix[index].typeOfTile {
+            
         case eType.good?:
-            
             gameLogic?.gameBoard.currentGood -= 1
-            
         case eType.bad?:
-            
             gameLogic?.gameBoard.currentBad -= 1
-            
         case eType.life?:
-            
-            
             gameLogic?.gameBoard.currentLife -= 1
-            
         default:
             break
         }
@@ -92,7 +83,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidAppear(_ animated: Bool) {
         
-        timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(timerReady), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(mainTimerReady), userInfo: nil, repeats: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +93,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func timerReady() {
+    func mainTimerReady() {
         
         currentTime += 1
         timeLabel.text = String(currentTime / 4)
@@ -118,27 +109,21 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func createNewTile() {
         
-        /// print("create new tile :: gameLogic?.gameBoard.currentTotalVisible = ", gameLogic!.gameBoard.currentTotalVisible)
-        /// print("currentTotalVisible = ", gameLogic!.gameBoard.currentTotalVisible)
-        
-        // choose tile
+        // choose random tile
         let randRow: Int = Int(arc4random_uniform(UInt32(numOfRow)))
         let randCol: Int = Int(arc4random_uniform(UInt32(numOfCol)))
+        
         let numOfCell: Int = randRow * numOfCol + randCol
         
-        let idx: IndexPath = [0, numOfCell]
-        
-        let cell : CustomCell = collectionView.cellForItem(at: idx) as! CustomCell
+        let cell : CustomCell = collectionView.cellForItem(at: [0, numOfCell]) as! CustomCell
         
         if gameLogic?.gameBoard.tailMatrix[numOfCell].isVisible == false {
             
-            print("create index: " , numOfCell)
-            
-            let randIndex: Int = Int(arc4random_uniform(UInt32(images.count)))
+            let randImage: Int = Int(arc4random_uniform(UInt32(images.count)))
             
             if (gameLogic?.gameBoard.currentTotalVisible)! < (gameLogic?.gameBoard.maxTotalVisible)! {
                 
-                switch randIndex {
+                switch randImage {
                 case 0:
                     if (gameLogic?.gameBoard.currentGood)! < (gameLogic?.gameBoard.maxGood)!{
                         gameLogic?.gameBoard.tailMatrix[numOfCell].visible(type: eType.good, location: numOfCell)
@@ -147,9 +132,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         gameLogic?.gameBoard.currentTotalVisible += 1
                         gameLogic?.gameBoard.currentGood += 1
                         
-                        /// 
                         gameLogic?.gameBoard.tailMatrix[numOfCell].delegate = self
-                        ///gameLogic?.gameBoard.tailMatrix[numOfCell].requestData()
                         
                     }
                 case 1:
@@ -160,21 +143,19 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         gameLogic?.gameBoard.currentTotalVisible += 1
                         gameLogic?.gameBoard.currentBad += 1
                         
-                        ///
                         gameLogic?.gameBoard.tailMatrix[numOfCell].delegate = self
-                        ///gameLogic?.gameBoard.tailMatrix[numOfCell].requestData()
                     }
                 case 2:
-                    if (gameLogic?.gameBoard.currentLife)! < (gameLogic?.gameBoard.maxCurrentLife)! {
+                    if (gameLogic?.gameBoard.currentLife)! < (gameLogic?.gameBoard.maxCurrentLife)! && (totalLife < (gameLogic?.gameBoard.maxLife)!){
+                        
+                        totalLife += 1
                         gameLogic?.gameBoard.tailMatrix[numOfCell].visible(type: eType.life, location: numOfCell)
                         cell.myImage.image = UIImage(named: images[2])
                         
                         gameLogic?.gameBoard.currentTotalVisible += 1
                         gameLogic?.gameBoard.currentLife += 1
                         
-                        ///
                         gameLogic?.gameBoard.tailMatrix[numOfCell].delegate = self
-                        ///gameLogic?.gameBoard.tailMatrix[numOfCell].requestData()
                     }
                 default:
                     break

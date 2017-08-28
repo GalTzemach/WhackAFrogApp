@@ -22,11 +22,11 @@ class GameBoard{
     let maxBad: Int
     var currentBad: Int
     
+    let maxLife: Int
     var maxCurrentLife: Int
     var currentLife: Int
     
     init() {
-        /// print("GameBoard.init() call")
         
         for _ in 0...20{
             tailMatrix.append(Tile.init())
@@ -35,6 +35,7 @@ class GameBoard{
         maxTotalVisible = maxTile
         maxGood = maxTile / 2
         maxBad = maxTile / 2
+        maxLife = 2
         
         maxCurrentLife = 1
         
@@ -42,7 +43,6 @@ class GameBoard{
         currentGood = 0
         currentBad = 0
         currentLife = 0
-        
     }
     
     

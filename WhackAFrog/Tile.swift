@@ -5,11 +5,11 @@
 //  Created by Tal Zemah on 20/08/2017.
 //  Copyright © 2017 Tal Zemah. All rights reserved.
 //
+
 import Foundation
 
-
-protocol DataModelDelegate: class {
-    func didRecieveDataUpdate(data: Int)
+protocol TileTimeUp: class {
+    func tileDisappeare(data: Int)
 }
 
 enum eType {
@@ -18,8 +18,7 @@ enum eType {
 
 class Tile {
     
-    /// 
-    weak var delegate: DataModelDelegate?
+    weak var delegate: TileTimeUp?
 
     var names: [String] = ["blank", "good", "bad", "life"]
     
@@ -37,13 +36,10 @@ class Tile {
         self.typeOfTile = eType.blank
     }
     
-    ///
     func requestData() {
-        // the data was received and parsed to String
         
-        ///let data = "Data from cell number: " + String(location) + " finish timer"
         let data: Int = location
-        delegate?.didRecieveDataUpdate(data: data)
+        delegate?.tileDisappeare(data: data)
     }
     
     func visible(type: eType, location: Int) {
@@ -52,10 +48,10 @@ class Tile {
         self.isVisible = true
         self.location = location
         
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(tileDisappeare), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(tileTimerReady), userInfo: nil, repeats: false)
     }
     
-    @objc func tileDisappeare() {
+    @objc func tileTimerReady() {
         
         requestData()
     }

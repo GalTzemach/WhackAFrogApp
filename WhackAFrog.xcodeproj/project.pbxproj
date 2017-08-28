@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D34415B01F49A8790009F5A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34415AF1F49A8790009F5A0 /* AppDelegate.swift */; };
-		D34415B21F49A8790009F5A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34415B11F49A8790009F5A0 /* ViewController.swift */; };
 		D34415B51F49A8790009F5A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34415B31F49A8790009F5A0 /* Main.storyboard */; };
 		D34415B71F49A8790009F5A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34415B61F49A8790009F5A0 /* Assets.xcassets */; };
 		D34415BA1F49A8790009F5A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34415B81F49A8790009F5A0 /* LaunchScreen.storyboard */; };
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		D34415AC1F49A8790009F5A0 /* WhackAFrog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhackAFrog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34415AF1F49A8790009F5A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D34415B11F49A8790009F5A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D34415B41F49A8790009F5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D34415B61F49A8790009F5A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D34415B91F49A8790009F5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,14 +113,10 @@
 			children = (
 				D3BE443F1F49BFB2000D8A08 /* ViewControllers */,
 				D3BE443E1F49BF4D000D8A08 /* BL */,
-				D3BE44461F49C7F0000D8A08 /* MainViewController.swift */,
-				D3BE44481F49CC2F000D8A08 /* GameViewController.swift */,
-				D34415AF1F49A8790009F5A0 /* AppDelegate.swift */,
-				D34415B11F49A8790009F5A0 /* ViewController.swift */,
 				D34415B31F49A8790009F5A0 /* Main.storyboard */,
-				D3BE444C1F49F3AD000D8A08 /* CustomCell.swift */,
-				D3BE444A1F49D607000D8A08 /* GameOverViewController.swift */,
 				D34415B61F49A8790009F5A0 /* Assets.xcassets */,
+				D34415AF1F49A8790009F5A0 /* AppDelegate.swift */,
+				D3BE444C1F49F3AD000D8A08 /* CustomCell.swift */,
 				D34415B81F49A8790009F5A0 /* LaunchScreen.storyboard */,
 				D34415BB1F49A8790009F5A0 /* Info.plist */,
 			);
@@ -160,7 +154,10 @@
 		D3BE443F1F49BFB2000D8A08 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D3BE44461F49C7F0000D8A08 /* MainViewController.swift */,
+				D3BE44481F49CC2F000D8A08 /* GameViewController.swift */,
 				D3BE44441F49C564000D8A08 /* HelpViewController.swift */,
+				D3BE444A1F49D607000D8A08 /* GameOverViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -303,7 +300,6 @@
 				D34415DE1F49B7810009F5A0 /* GameLogic.swift in Sources */,
 				D3BE444D1F49F3AD000D8A08 /* CustomCell.swift in Sources */,
 				D3BE44451F49C564000D8A08 /* HelpViewController.swift in Sources */,
-				D34415B21F49A8790009F5A0 /* ViewController.swift in Sources */,
 				D3BE44491F49CC2F000D8A08 /* GameViewController.swift in Sources */,
 				D34415E21F49B9C40009F5A0 /* GameBoard.swift in Sources */,
 				D34415B01F49A8790009F5A0 /* AppDelegate.swift in Sources */,

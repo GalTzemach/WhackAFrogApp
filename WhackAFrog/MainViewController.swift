@@ -13,11 +13,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
         // set background
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
     }
     
+    
+    // actions
     @IBAction func startGameClicked(_ sender: Any) {
         performSegue(withIdentifier: "mainToGameSegue", sender: self)
     
@@ -32,11 +33,11 @@ class MainViewController: UIViewController {
         exit(0)
     }
     
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
 }
