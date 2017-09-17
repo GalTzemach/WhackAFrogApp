@@ -17,7 +17,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var lifeLabel: UILabel!
     
     let mUserDefaults = UserDefaults.standard
-
+    
     var typeCharacter: Int = 1
     
     let numOfRow: Int = 5
@@ -48,6 +48,9 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         } else {
             images = images1
         }
+        
+        // record table
+        
         
         let screenWidth: Int = Int(UIScreen.main.bounds.width)
         let itemSize = screenWidth / numOfCol - (20 + 40 / numOfCol) // 4 element each row
@@ -85,12 +88,12 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "gameToGameOverSegue") {
-            let vc = segue.destination as! GameOverViewController
-            vc.score = score
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "gameToGameOverSegue") {
+//            let vc = segue.destination as! GameOverViewController
+//            vc.score = score
+//        }
+//    }
     
     func tileDisappeare(data: Int) {
         
@@ -191,9 +194,8 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func gameOver() {
         
+        mUserDefaults.set(score, forKey: "recentScore")
         performSegue(withIdentifier: "gameToGameOverSegue", sender: self)
-        
-        ///sself.dismiss(animated: true, completion: nil)
     }
     
     
@@ -265,6 +267,6 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     deinit {
         /// delete
-        print("I'm dead")
+        print("gameViewController - dead")
     }
 }

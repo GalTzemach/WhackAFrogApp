@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30DD4611F6E8A000067FA40 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30DD4601F6E8A000067FA40 /* Record.swift */; };
+		D30DD4641F6EA4C30067FA40 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30DD4631F6EA4C30067FA40 /* CoreLocation.framework */; };
+		D30DD46A1F6F11BA0067FA40 /* customTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30DD4691F6F11BA0067FA40 /* customTableViewCell.swift */; };
 		D34415B01F49A8790009F5A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34415AF1F49A8790009F5A0 /* AppDelegate.swift */; };
 		D34415B51F49A8790009F5A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34415B31F49A8790009F5A0 /* Main.storyboard */; };
 		D34415B71F49A8790009F5A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34415B61F49A8790009F5A0 /* Assets.xcassets */; };
@@ -45,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D30DD4601F6E8A000067FA40 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		D30DD4631F6EA4C30067FA40 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D30DD4691F6F11BA0067FA40 /* customTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTableViewCell.swift; sourceTree = "<group>"; };
 		D34415AC1F49A8790009F5A0 /* WhackAFrog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhackAFrog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34415AF1F49A8790009F5A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D34415B41F49A8790009F5A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D30DD4641F6EA4C30067FA40 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D30DD4621F6EA4C30067FA40 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D30DD4631F6EA4C30067FA40 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D34415A31F49A8790009F5A0 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +118,7 @@
 				D34415C31F49A8790009F5A0 /* WhackAFrogTests */,
 				D34415CE1F49A8790009F5A0 /* WhackAFrogUITests */,
 				D34415AD1F49A8790009F5A0 /* Products */,
+				D30DD4621F6EA4C30067FA40 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,7 +140,6 @@
 				D34415B31F49A8790009F5A0 /* Main.storyboard */,
 				D34415B61F49A8790009F5A0 /* Assets.xcassets */,
 				D34415AF1F49A8790009F5A0 /* AppDelegate.swift */,
-				D3BE444C1F49F3AD000D8A08 /* CustomCell.swift */,
 				D34415B81F49A8790009F5A0 /* LaunchScreen.storyboard */,
 				D34415BB1F49A8790009F5A0 /* Info.plist */,
 			);
@@ -152,9 +167,12 @@
 		D3BE443E1F49BF4D000D8A08 /* BL */ = {
 			isa = PBXGroup;
 			children = (
+				D3BE444C1F49F3AD000D8A08 /* CustomCell.swift */,
+				D30DD4691F6F11BA0067FA40 /* customTableViewCell.swift */,
 				D34415DD1F49B7810009F5A0 /* GameLogic.swift */,
 				D34415E11F49B9C40009F5A0 /* GameBoard.swift */,
 				D34415DF1F49B8B60009F5A0 /* Tile.swift */,
+				D30DD4601F6E8A000067FA40 /* Record.swift */,
 			);
 			name = BL;
 			sourceTree = "<group>";
@@ -310,8 +328,10 @@
 			files = (
 				D3BE44471F49C7F0000D8A08 /* MainViewController.swift in Sources */,
 				D34415DE1F49B7810009F5A0 /* GameLogic.swift in Sources */,
+				D30DD46A1F6F11BA0067FA40 /* customTableViewCell.swift in Sources */,
 				D39944F21F5D79690034A677 /* RecordTableViewController.swift in Sources */,
 				D3BE444D1F49F3AD000D8A08 /* CustomCell.swift in Sources */,
+				D30DD4611F6E8A000067FA40 /* Record.swift in Sources */,
 				D361E2E41F604AA30049EB50 /* NewRecordViewController.swift in Sources */,
 				D3BE44451F49C564000D8A08 /* HelpViewController.swift in Sources */,
 				D3BE44491F49CC2F000D8A08 /* GameViewController.swift in Sources */,

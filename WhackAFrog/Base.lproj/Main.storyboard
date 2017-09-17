@@ -280,6 +280,7 @@ And of course gather as much life as possible.</string>
                         <outlet property="scoreLabel" destination="cPP-7K-Bhw" id="klq-d1-DbX"/>
                         <outlet property="timeLabel" destination="mB2-ja-aiq" id="K6S-r9-AoV"/>
                         <segue destination="NTS-dV-8dD" kind="show" identifier="gameToGameOverSegue" id="NrB-BH-2j2"/>
+                        <segue destination="1rq-UL-11y" kind="show" identifier="gameToNewRecordSegue" id="bqm-zj-C6A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozE-7g-lAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -336,6 +337,9 @@ And of course gather as much life as possible.</string>
                                                 <state key="normal" title="record table">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="recordTableClicked:" destination="NTS-dV-8dD" eventType="touchUpInside" id="Cmp-0n-FcB"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8n-EA-9WJ">
                                                 <rect key="frame" x="79" y="180" width="71" height="60"/>
@@ -360,6 +364,8 @@ And of course gather as much life as possible.</string>
                     </view>
                     <connections>
                         <outlet property="scoreLabel" destination="L8R-WJ-bRE" id="Fbw-3K-9cU"/>
+                        <segue destination="APO-q7-dFJ" kind="show" identifier="gameOverToRecordTableSegue" id="QlS-W6-oYK"/>
+                        <segue destination="1rq-UL-11y" kind="show" identifier="gameOverToNewRecordSegue" id="73P-xR-1sb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4i-Fj-f2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -528,7 +534,7 @@ And of course gather as much life as possible.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d69-2x-Wfq" userLabel="NameVerticalStackView">
-                                        <rect key="frame" x="56.5" y="108" width="150" height="60.5"/>
+                                        <rect key="frame" x="57" y="108" width="150" height="60.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inf-fH-L9T">
                                                 <rect key="frame" x="32" y="0.0" width="86" height="20.5"/>
@@ -536,7 +542,7 @@ And of course gather as much life as possible.</string>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nkS-Nm-VyU">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nkS-Nm-VyU" userLabel="Name text field">
                                                 <rect key="frame" x="0.0" y="30.5" width="150" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="Ne7-7b-bgT"/>
@@ -548,15 +554,21 @@ And of course gather as much life as possible.</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="GoH-pP-L2s" userLabel="ButtonVerticalStackView">
-                                        <rect key="frame" x="107.5" y="228.5" width="48" height="90"/>
+                                        <rect key="frame" x="108" y="228.5" width="48" height="90"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwp-St-GMP">
                                                 <rect key="frame" x="7" y="0.0" width="34" height="30"/>
                                                 <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveClicked:" destination="1rq-UL-11y" eventType="touchUpInside" id="Kac-P6-b5X"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwa-Tq-BNy">
                                                 <rect key="frame" x="0.0" y="60" width="48" height="30"/>
                                                 <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelClicked:" destination="1rq-UL-11y" eventType="touchUpInside" id="CfD-YS-ijc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -569,6 +581,9 @@ And of course gather as much life as possible.</string>
                             <constraint firstItem="rBX-8u-2RP" firstAttribute="centerY" secondItem="SAM-Ih-Xal" secondAttribute="centerY" id="qXK-ih-CVf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="nkS-Nm-VyU" id="oLg-0r-Of9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="is3-oJ-hql" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -587,25 +602,115 @@ And of course gather as much life as possible.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record Table" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCO-7z-m6x" userLabel="title">
-                                <rect key="frame" x="38" y="61" width="245.5" height="48"/>
+                                <rect key="frame" x="38" y="40" width="245.5" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pe-Tw-iaY">
-                                <rect key="frame" x="124" y="269" width="72" height="30"/>
-                                <state key="normal" title="Show map"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hT-7D-Wyw">
+                                <rect key="frame" x="132" y="526" width="56" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="showMapClicked:" destination="APO-q7-dFJ" eventType="touchUpInside" id="N6d-q3-FCF"/>
+                                    <action selector="backClicked:" destination="APO-q7-dFJ" eventType="touchUpInside" id="4EM-IF-fFh"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hrg-yo-a9J">
+                                <rect key="frame" x="0.0" y="98" width="320" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLe-Zw-oI8">
+                                        <rect key="frame" x="0.0" y="3" width="100" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhQ-UG-2Qs">
+                                        <rect key="frame" x="110" y="3" width="100" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geV-Ll-2MF">
+                                        <rect key="frame" x="220" y="3" width="100" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="B68-2m-ifJ"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mlQ-PK-rvg">
+                                <rect key="frame" x="0.0" y="148" width="310" height="380"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="aOK-A2-s1j" customClass="customTableViewCell" customModule="WhackAFrog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="310" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aOK-A2-s1j" id="euL-ET-c7T">
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zez-Yc-ms1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="310.5" height="49.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKi-fQ-F5y">
+                                                            <rect key="frame" x="0.0" y="14.5" width="103.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xm-ww-qnm">
+                                                            <rect key="frame" x="103.5" y="14.5" width="103.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zMG-XD-0VF">
+                                                            <rect key="frame" x="207" y="0.0" width="103.5" height="49.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="6hs-rf-mme"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="zez-Yc-ms1" secondAttribute="trailing" id="0Es-ji-nLu"/>
+                                                <constraint firstItem="zez-Yc-ms1" firstAttribute="top" secondItem="euL-ET-c7T" secondAttribute="top" id="C4H-4r-1dI"/>
+                                                <constraint firstAttribute="bottom" secondItem="zez-Yc-ms1" secondAttribute="bottom" id="XOO-Rl-gt0"/>
+                                                <constraint firstItem="zez-Yc-ms1" firstAttribute="leading" secondItem="euL-ET-c7T" secondAttribute="leading" id="tCg-ar-GAA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locationImage" destination="zMG-XD-0VF" id="XyL-6m-7K9"/>
+                                            <outlet property="nameLabel" destination="8xm-ww-qnm" id="5ZZ-P5-blv"/>
+                                            <outlet property="scoreLabel" destination="gKi-fQ-F5y" id="8hE-dY-Gmb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="APO-q7-dFJ" id="9LG-cC-L6D"/>
+                                    <outlet property="delegate" destination="APO-q7-dFJ" id="56e-pK-Ff5"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QCO-7z-m6x" firstAttribute="centerX" secondItem="yfD-t5-aOR" secondAttribute="centerX" id="Crz-GG-YBK"/>
-                            <constraint firstItem="3Pe-Tw-iaY" firstAttribute="centerX" secondItem="yfD-t5-aOR" secondAttribute="centerX" id="UbM-Uh-Nar"/>
-                            <constraint firstItem="QCO-7z-m6x" firstAttribute="top" secondItem="whJ-mz-AUR" secondAttribute="bottom" constant="41" id="rAk-9l-Hp6"/>
-                            <constraint firstItem="3Pe-Tw-iaY" firstAttribute="centerY" secondItem="yfD-t5-aOR" secondAttribute="centerY" id="wWK-CY-xdM"/>
+                            <constraint firstItem="8rC-dI-OF6" firstAttribute="top" secondItem="mlQ-PK-rvg" secondAttribute="bottom" constant="40" id="4F2-ak-aBM"/>
+                            <constraint firstItem="mlQ-PK-rvg" firstAttribute="leading" secondItem="yfD-t5-aOR" secondAttribute="leading" id="BkD-LM-SKa"/>
+                            <constraint firstItem="8rC-dI-OF6" firstAttribute="top" secondItem="1hT-7D-Wyw" secondAttribute="bottom" id="EpD-UX-DPF"/>
+                            <constraint firstItem="QCO-7z-m6x" firstAttribute="centerX" secondItem="yfD-t5-aOR" secondAttribute="centerX" id="LAp-av-Ceb"/>
+                            <constraint firstAttribute="trailing" secondItem="mlQ-PK-rvg" secondAttribute="trailing" constant="10" id="Moz-ic-7jm"/>
+                            <constraint firstItem="hrg-yo-a9J" firstAttribute="leading" secondItem="yfD-t5-aOR" secondAttribute="leading" id="RKx-Ar-5kc"/>
+                            <constraint firstItem="hrg-yo-a9J" firstAttribute="centerX" secondItem="yfD-t5-aOR" secondAttribute="centerX" id="XIb-7w-BQc"/>
+                            <constraint firstItem="hrg-yo-a9J" firstAttribute="top" secondItem="QCO-7z-m6x" secondAttribute="bottom" constant="10" id="dsC-xv-N3C"/>
+                            <constraint firstItem="1hT-7D-Wyw" firstAttribute="centerX" secondItem="yfD-t5-aOR" secondAttribute="centerX" id="qBe-nI-jBJ"/>
+                            <constraint firstItem="QCO-7z-m6x" firstAttribute="top" secondItem="whJ-mz-AUR" secondAttribute="bottom" constant="20" id="uQc-sH-PQI"/>
+                            <constraint firstItem="mlQ-PK-rvg" firstAttribute="top" secondItem="hrg-yo-a9J" secondAttribute="bottom" constant="20" id="vWC-Wi-u1G"/>
                         </constraints>
                     </view>
                     <connections>
@@ -631,13 +736,25 @@ And of course gather as much life as possible.</string>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XDn-c4-ORK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAq-ag-M3F">
+                                <rect key="frame" x="132" y="526" width="56" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backClicked:" destination="rfv-V9-blA" eventType="touchUpInside" id="tMx-H5-qfc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XDn-c4-ORK" firstAttribute="width" secondItem="dLY-cY-hzS" secondAttribute="width" id="63P-fS-u3G"/>
                             <constraint firstItem="XDn-c4-ORK" firstAttribute="centerY" secondItem="dLY-cY-hzS" secondAttribute="centerY" id="BO7-i3-TFf"/>
                             <constraint firstItem="XDn-c4-ORK" firstAttribute="height" secondItem="dLY-cY-hzS" secondAttribute="height" id="CRJ-v1-8GY"/>
+                            <constraint firstItem="aNq-8V-TMs" firstAttribute="top" secondItem="jAq-ag-M3F" secondAttribute="bottom" id="XLA-lr-0sp"/>
                             <constraint firstItem="XDn-c4-ORK" firstAttribute="centerX" secondItem="dLY-cY-hzS" secondAttribute="centerX" id="ghm-lN-yeq"/>
+                            <constraint firstItem="jAq-ag-M3F" firstAttribute="centerX" secondItem="dLY-cY-hzS" secondAttribute="centerX" id="vBn-zH-z4a"/>
                         </constraints>
                     </view>
                     <connections>
@@ -659,6 +776,8 @@ And of course gather as much life as possible.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SA4-dK-BiM"/>
+        <segue reference="73P-xR-1sb"/>
+        <segue reference="QlS-W6-oYK"/>
         <segue reference="pWb-iu-kKz"/>
     </inferredMetricsTieBreakers>
 </document>

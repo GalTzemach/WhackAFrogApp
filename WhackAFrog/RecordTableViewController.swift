@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
-class RecordTableViewController: UIViewController {
+class RecordTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var minimalScore: Int = 0 /// change 0 to real value
+    let mUserDefaults = UserDefaults.standard
+    var recordArr: [Record] = [Record]()
+    
+    /// var minimalScore: Int = 0 /// change 0 to real value
     /// var recordArr = [Record]()
 
     
@@ -19,7 +23,9 @@ class RecordTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // update recordArr from userDefault
+        let recordArrData = mUserDefaults.data(forKey: "recordArr")
+        recordArr = NSKeyedUnarchiver.unarchiveObject(with: recordArrData!) as? [Record] ?? [Record]()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,11 +33,41 @@ class RecordTableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // actions - (buttons clicked)
-    @IBAction func showMapClicked(_ sender: Any) {
-        performSegue(withIdentifier: "recordTableToRecordMapSegue", sender: self)
-        //self.present(RecordMapViewController(), animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recordArr.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! customTableViewCell
+        
+        cell.nameLabel.text = recordArr[indexPath.row].name
+        cell.scoreLabel.text = String(recordArr[indexPath.row].score)
+        cell.locationImage.image = #imageLiteral(resourceName: "location")
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//        let tempLocation = CLLocationCoordinate2DMake(Double(recordArr[indexPath.row].latitude)!, Double(recordArr[indexPath.row].longitude)!)
+        
+        mUserDefaults.set(Double(recordArr[indexPath.row].latitude), forKey: "latitudeToShow")
+        mUserDefaults.set(Double(recordArr[indexPath.row].longitude), forKey: "longitudeToShow")
+        mUserDefaults.set(recordArr[indexPath.row].name, forKey: "nameToShow")
+        mUserDefaults.set(recordArr[indexPath.row].score, forKey: "scoreToShow")
+        
+        performSegue(withIdentifier: "recordTableToRecordMapSegue", sender: self)
+    }
+    
+    
+    
+    // actions - (buttons clicked)
+    @IBAction func backClicked(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
     /*
     // MARK: - Navigation

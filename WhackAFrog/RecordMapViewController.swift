@@ -12,11 +12,11 @@ import CoreLocation
 
 class RecordMapViewController: UIViewController {
 
-    /// var location: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 31.753879, longitude: 34.988457)
-
+    let mUserDefaults = UserDefaults.standard
+    
+    /// var locationToShow: CLLocationCoordinate2D?
     
     // outlets
-    
     @IBOutlet weak var map: MKMapView!    
     
     override func viewDidLoad() {
@@ -24,14 +24,19 @@ class RecordMapViewController: UIViewController {
 
         let homeLocation = CLLocationCoordinate2D(latitude: 31.753879, longitude: 34.988457)
         
+        let locationToShow = CLLocationCoordinate2DMake(mUserDefaults.double(forKey: "latitudeToShow"), mUserDefaults.double(forKey: "longitudeToShow"))
+        
+        print(locationToShow)
+        print(homeLocation)
+        
         let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-        let region = MKCoordinateRegion(center: homeLocation, span: span)
+        let region = MKCoordinateRegion(center: locationToShow, span: span)
         map.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
-        annotation.coordinate = homeLocation
-        annotation.title = "Home"
-        annotation.subtitle = "Hahaluzim 12"
+        annotation.coordinate = locationToShow
+        annotation.title = mUserDefaults.object(forKey: "nameToShow") as? String ?? ""
+        annotation.subtitle = "Score: " + String(mUserDefaults.integer(forKey: "scoreToShow"))
         
         map.addAnnotation(annotation)
     }
@@ -41,6 +46,11 @@ class RecordMapViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // actions - (buttons clicked)
+    @IBAction func backClicked(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
