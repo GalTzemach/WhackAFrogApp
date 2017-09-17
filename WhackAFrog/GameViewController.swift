@@ -16,50 +16,38 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lifeLabel: UILabel!
     
+    let mUserDefaults = UserDefaults.standard
+
+    var typeCharacter: Int = 1
+    
     let numOfRow: Int = 5
     let numOfCol: Int = 4
     let durationGame: Int = 30
     
-    weak var timer: Timer? /// weak ?
+    weak var timer: Timer?
     var gameLogic: GameLogic?
     var currentTime: Int = 0
     var score: Int = 0
     var totalLife: Int = 0
     
-    let images: [String] = ["good", "bad", "life"]
-    
-    
-    func tileDisappeare(data: Int) {
-        
-        deleteTile(index: data)
-    }
-    
-    func deleteTile(index: Int) {
-        
-        let cell : CustomCell = collectionView.cellForItem(at: [0, index]) as! CustomCell
-        
-        switch gameLogic?.gameBoard.tailMatrix[index].typeOfTile {
-            
-        case eType.good?:
-            gameLogic?.gameBoard.currentGood -= 1
-        case eType.bad?:
-            gameLogic?.gameBoard.currentBad -= 1
-        case eType.life?:
-            gameLogic?.gameBoard.currentLife -= 1
-        default:
-            break
-        }
-        
-        cell.myImage.image = nil
-        gameLogic?.gameBoard.tailMatrix[index].invisible()
-        gameLogic?.gameBoard.currentTotalVisible -= 1
-    }
+    let images1: [String] = ["good", "bad", "life"]
+    let images2: [String] = ["good2", "bad2", "life2"]
+    var images: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set background
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        
+        // choose appropriate images to show
+        typeCharacter = mUserDefaults.integer(forKey: "typeCharacter")
+        
+        if typeCharacter == 2 {
+            images = images2
+        } else {
+            images = images1
+        }
         
         let screenWidth: Int = Int(UIScreen.main.bounds.width)
         let itemSize = screenWidth / numOfCol - (20 + 40 / numOfCol) // 4 element each row
@@ -83,7 +71,18 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidAppear(_ animated: Bool) {
         
+        /// in viewDidLoad
         timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(mainTimerReady), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("timer invalitade")
+        timer?.invalidate()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,6 +90,32 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let vc = segue.destination as! GameOverViewController
             vc.score = score
         }
+    }
+    
+    func tileDisappeare(data: Int) {
+        
+        deleteTile(index: data)
+    }
+    
+    func deleteTile(index: Int) {
+        
+        let cell: CustomCell = collectionView.cellForItem(at: [0, index]) as! CustomCell
+        
+        switch gameLogic?.gameBoard.tailMatrix[index].typeOfTile {
+            
+        case eType.good?:
+            gameLogic?.gameBoard.currentGood -= 1
+        case eType.bad?:
+            gameLogic?.gameBoard.currentBad -= 1
+        case eType.life?:
+            gameLogic?.gameBoard.currentLife -= 1
+        default:
+            break
+        }
+        
+        cell.myImage.image = nil
+        gameLogic?.gameBoard.tailMatrix[index].invisible()
+        gameLogic?.gameBoard.currentTotalVisible -= 1
     }
     
     func mainTimerReady() {
@@ -102,7 +127,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         // end game
         if currentTime / 4 == durationGame {
-            won();
+            gameOver();
         }
     }
     
@@ -164,25 +189,18 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    
-    func won() {
+    func gameOver() {
         
         performSegue(withIdentifier: "gameToGameOverSegue", sender: self)
+        
+        ///sself.dismiss(animated: true, completion: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        print("timer invalitade")
-        timer?.invalidate()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    // Actions
+    // actions - (buttons clicked)
     @IBAction func backClicked(_ sender: Any) {
-        performSegue(withIdentifier: "gameToMainSegue", sender: self)
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -205,7 +223,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // perform when any item clicked
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("Item pressed is: " , indexPath.row)
+        // print("Item pressed is: " , indexPath.row)
         
         if gameLogic?.gameBoard.tailMatrix[indexPath.row].isVisible == true {
             
@@ -226,7 +244,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     lifeLabel.text = String(describing: gameLogic!.life)
                     gameLogic?.gameBoard.currentBad -= 1
                 } else {
-                    won() /// change name to finish
+                    gameOver() /// change name to finish
                 }
                 
             case eType.life?:
@@ -243,5 +261,10 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
             gameLogic?.gameBoard.tailMatrix[indexPath.row].invisible()
             gameLogic?.gameBoard.currentTotalVisible -= 1
         }
+    }
+    
+    deinit {
+        /// delete
+        print("I'm dead")
     }
 }

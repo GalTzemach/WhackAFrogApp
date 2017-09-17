@@ -28,9 +28,15 @@ class GameOverViewController: UIViewController {
     }
     
 
-    // Actions
-    
+    // actions - (buttons clicked)
     @IBAction func newGameClicked(_ sender: Any) {
+        
+        self.presentingViewController?.beginAppearanceTransition(false, animated: true)
+        
+        ///self.dismiss(animated: true, completion: nil)
+
+        /// UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "GameViewController")
+
         performSegue(withIdentifier: "gameOverToGameSegue", sender: self)
     }
     

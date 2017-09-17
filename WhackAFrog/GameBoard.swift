@@ -12,6 +12,7 @@ class GameBoard{
     
     let maxTile: Int = 10
     
+    /// change matrix name
     var tailMatrix = [Tile]()
     let maxTotalVisible: Int
     var currentTotalVisible: Int

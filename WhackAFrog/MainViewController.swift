@@ -18,22 +18,33 @@ class MainViewController: UIViewController {
     }
     
     
-    // actions
+    // actions - (buttons clicked)
     @IBAction func startGameClicked(_ sender: Any) {
         performSegue(withIdentifier: "mainToGameSegue", sender: self)
-    
     }
     
+    @IBAction func newCharacterClicked(_ sender: Any) {
+        performSegue(withIdentifier: "mianToReplaceCharacterSegue", sender: self)
+    }
+    
+    @IBAction func recordTableClicked(_ sender: Any) {
+        performSegue(withIdentifier: "mainToRecordTableSegue", sender: self)
+    }
     @IBAction func helpClicked(_ sender: Any) {
         performSegue(withIdentifier: "mainToHelpSegue", sender: self)
     }
 
     @IBAction func exitClicked(_ sender: Any) {
-       
         exit(0)
     }
     
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "mainToGameSegue") {
+//            let vc = segue.destination as! GameViewController
+//            vc.typeCharacter = self.typeCharacter
+//        }
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

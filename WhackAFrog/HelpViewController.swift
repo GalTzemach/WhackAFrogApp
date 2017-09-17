@@ -10,6 +10,8 @@ import UIKit
 
 class HelpViewController: UIViewController {
 
+    var helpDescription: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,10 +24,10 @@ class HelpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Actions
     
+    // actions - (buttons clicked)
     @IBAction func backClicked(_ sender: Any) {
-        performSegue(withIdentifier: "helpToMainSegue", sender: self)
+        self.dismiss(animated: true, completion: nil)
     }
     
 

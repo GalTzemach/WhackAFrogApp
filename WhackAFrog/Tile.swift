@@ -48,7 +48,7 @@ class Tile {
         self.isVisible = true
         self.location = location
         
-        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(tileTimerReady), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(tileTimerReady), userInfo: nil, repeats: false)
     }
     
     @objc func tileTimerReady() {
