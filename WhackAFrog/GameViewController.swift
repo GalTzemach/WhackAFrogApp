@@ -158,7 +158,8 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell : CustomCell = collectionView.cellForItem(at: [0, numOfCell]) as! CustomCell
         
         if gameLogic?.gameBoard.tailMatrix[numOfCell].isVisible == false {
-            
+            cell.myImage.alpha = 0
+
             let randImage: Int = Int(arc4random_uniform(UInt32(images.count)))
             
             if (gameLogic?.gameBoard.currentTotalVisible)! < (gameLogic?.gameBoard.maxTotalVisible)! {
@@ -200,6 +201,11 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 default:
                     break
                 }
+                
+                UIView.animate(withDuration: 1, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+                    cell.myImage.alpha = 1
+                }, completion: nil)
+                
             }
         }
     }
@@ -251,6 +257,19 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 gameLogic?.gameBoard.currentGood -= 1
                 
+                // animation for good click
+                let height = cell.myImage.frame.size.height
+                let width = cell.myImage.frame.size.width
+                
+                UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+                    cell.myImage.frame.size.height = 0
+                    cell.myImage.frame.size.width = 0
+                }, completion: { (success:Bool) in
+                    cell.myImage.frame.size.height = height
+                    cell.myImage.frame.size.width = width
+                    cell.myImage.image = nil
+                })
+                
             case eType.bad?:
                 
                 if (gameLogic?.life)! > 1 {
@@ -261,17 +280,37 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     gameOver() /// change name to finish
                 }
                 
+                // animation for bad click
+                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
+                    cell.myImage.frame.origin.x += 20
+                }, completion: { (success:Bool) in
+                    UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 10, options: UIViewAnimationOptions.curveLinear, animations: {
+                        cell.myImage.frame.origin.x -= 20
+                    }, completion: { (success:Bool) in
+                        cell.myImage.image = nil
+                    })
+                })
+                
             case eType.life?:
                 
                 gameLogic?.life += 1
                 lifeLabel.text = String(describing: gameLogic!.life)
                 gameLogic?.gameBoard.currentLife -= 1
                 
+                // animation for life click
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+                    cell.myImage.frame.size.width += 100
+                    cell.myImage.frame.size.height += 100
+                }, completion: { (success:Bool) in
+                    cell.myImage.frame.size.width -= 100
+                    cell.myImage.frame.size.height -= 100
+                    cell.myImage.image = nil
+                })
+                
             default:
                 break
             }
             
-            cell.myImage.image = nil
             gameLogic?.gameBoard.tailMatrix[indexPath.row].invisible()
             gameLogic?.gameBoard.currentTotalVisible -= 1
         }
