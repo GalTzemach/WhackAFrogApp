@@ -70,11 +70,13 @@ class GameOverViewController: UIViewController {
         
         self.presentingViewController?.beginAppearanceTransition(false, animated: true)
         
-        ///self.dismiss(animated: true, completion: nil)
+        /// self.dismiss(animated: true, completion: nil)
 
         /// UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "GameViewController")
 
+        self.dismiss(animated: true, completion: nil)
         performSegue(withIdentifier: "gameOverToGameSegue", sender: self)
+        
     }
     
     @IBAction func recordTableClicked(_ sender: Any) {        
