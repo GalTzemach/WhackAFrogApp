@@ -61,10 +61,6 @@ class NewRecordViewController: UIViewController, CLLocationManagerDelegate {
         let recordData = NSKeyedArchiver.archivedData(withRootObject: recordArr)
         mUserDefaults.set(recordData, forKey: "recordArr")
         
-        for record in recordArr {
-            record.show()
-        }
-        
         self.dismiss(animated: true, completion: nil)
     }
     

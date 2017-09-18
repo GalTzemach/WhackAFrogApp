@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,12 +22,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="y9U-Ei-5Uq">
-                                <rect key="frame" x="55.5" y="104" width="209" height="360"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="y9U-Ei-5Uq">
+                                <rect key="frame" x="55.5" y="80" width="209" height="350"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4Z-NH-MdJ">
-                                        <rect key="frame" x="24" y="0.0" width="161" height="48"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <rect key="frame" x="11" y="0.0" width="187" height="54"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                         <state key="normal" title="Start Game">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -36,7 +37,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xac-bk-LQ3">
-                                        <rect key="frame" x="0.0" y="78" width="209" height="48"/>
+                                        <rect key="frame" x="0.0" y="74" width="209" height="54"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="New character">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,7 +47,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNN-8q-Ffi">
-                                        <rect key="frame" x="14" y="156" width="181" height="48"/>
+                                        <rect key="frame" x="14" y="148" width="181" height="54"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="Record table">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -56,7 +57,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fti-vW-mvU">
-                                        <rect key="frame" x="71" y="234" width="67" height="48"/>
+                                        <rect key="frame" x="71" y="222" width="67" height="54"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="Help">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,7 +68,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRy-Pg-PKL">
-                                        <rect key="frame" x="77.5" y="312" width="54" height="48"/>
+                                        <rect key="frame" x="77.5" y="296" width="54" height="54"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <state key="normal" title="Exit">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,8 +82,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="y9U-Ei-5Uq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qvE-1c-G1q"/>
-                            <constraint firstItem="y9U-Ei-5Uq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ryR-Vo-tmJ"/>
+                            <constraint firstItem="y9U-Ei-5Uq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="giG-de-u4b"/>
+                            <constraint firstItem="y9U-Ei-5Uq" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="yP4-0s-xyl"/>
                         </constraints>
                     </view>
                     <connections>
@@ -106,27 +107,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yr7-Cr-lf4">
-                                <rect key="frame" x="16" y="50" width="288" height="400"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upr-eZ-SEm">
-                                        <rect key="frame" x="77" y="0.0" width="134" height="200"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iNg-Rf-TzH">
-                                        <rect key="frame" x="0.0" y="200" width="288" height="200"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Click as many green frogs as possible (each press = 1 score).
-Do not press a red frog (-1 life).
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upr-eZ-SEm">
+                                <rect key="frame" x="45" y="40" width="230" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iNg-Rf-TzH">
+                                <rect key="frame" x="16" y="128" width="288" height="312"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Click as many green elements as possible (each press = 1 score).
+
+Do not press a red element (-1 life).
+
 And of course gather as much life as possible.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                            </stackView>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBh-tE-p4Q">
-                                <rect key="frame" x="132" y="496" width="56" height="42"/>
+                                <rect key="frame" x="132" y="526" width="56" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,12 +138,20 @@ And of course gather as much life as possible.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tBh-tE-p4Q" firstAttribute="centerX" secondItem="8dc-RO-YUG" secondAttribute="centerX" id="8ms-aP-LkI"/>
-                            <constraint firstItem="yr7-Cr-lf4" firstAttribute="top" secondItem="I4S-KR-wT6" secondAttribute="bottom" constant="30" id="LKa-wC-wbv"/>
-                            <constraint firstItem="yr7-Cr-lf4" firstAttribute="centerX" secondItem="8dc-RO-YUG" secondAttribute="centerX" id="Ovu-4e-Es2"/>
-                            <constraint firstItem="XdT-g8-yO9" firstAttribute="top" secondItem="tBh-tE-p4Q" secondAttribute="bottom" constant="30" id="fQ9-pp-cuV"/>
+                            <constraint firstItem="iNg-Rf-TzH" firstAttribute="trailing" secondItem="8dc-RO-YUG" secondAttribute="trailingMargin" id="CJj-mG-srB"/>
+                            <constraint firstItem="iNg-Rf-TzH" firstAttribute="centerX" secondItem="8dc-RO-YUG" secondAttribute="centerX" id="GPa-gm-eO4"/>
+                            <constraint firstItem="tBh-tE-p4Q" firstAttribute="centerX" secondItem="8dc-RO-YUG" secondAttribute="centerX" id="Ih7-6P-KSB"/>
+                            <constraint firstItem="upr-eZ-SEm" firstAttribute="centerX" secondItem="8dc-RO-YUG" secondAttribute="centerX" id="Kz4-WB-n82"/>
+                            <constraint firstItem="iNg-Rf-TzH" firstAttribute="leading" secondItem="8dc-RO-YUG" secondAttribute="leadingMargin" id="Oa7-d7-3MH"/>
+                            <constraint firstItem="upr-eZ-SEm" firstAttribute="top" secondItem="I4S-KR-wT6" secondAttribute="bottom" constant="20" id="SyW-M0-OKt"/>
+                            <constraint firstItem="XdT-g8-yO9" firstAttribute="top" secondItem="tBh-tE-p4Q" secondAttribute="bottom" id="j5V-yY-uqd"/>
+                            <constraint firstItem="iNg-Rf-TzH" firstAttribute="top" secondItem="upr-eZ-SEm" secondAttribute="bottom" constant="40" id="oZx-RV-QkE"/>
+                            <constraint firstItem="iNg-Rf-TzH" firstAttribute="centerY" secondItem="8dc-RO-YUG" secondAttribute="centerY" id="zTW-iB-8oi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="iNg-Rf-TzH" id="dBK-N4-X2u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Exw-VZ-Pey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -162,14 +169,14 @@ And of course gather as much life as possible.</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-Wb-HSh" userLabel="MainVerticalStackView">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-Wb-HSh" userLabel="MainVerticalStackView">
                                 <rect key="frame" x="0.0" y="50" width="320" height="518"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="km6-b9-cCO" userLabel="topHorizontalStackView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="29p-zd-SKB" userLabel="ScoreVerticalStackView">
-                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="80"/>
+                                                <rect key="frame" x="0.0" y="4" width="93.5" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsd-gs-cwl" userLabel="ScoreTitleLabel">
                                                         <rect key="frame" x="12" y="0.0" width="69.5" height="30"/>
@@ -184,7 +191,7 @@ And of course gather as much life as possible.</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XhM-n0-N2Y" userLabel="TimeVerticalStackView">
-                                                <rect key="frame" x="113.5" y="0.0" width="93" height="80"/>
+                                                <rect key="frame" x="113.5" y="4" width="93" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9d-5D-7Ue" userLabel="TimeTitleLabel">
                                                         <rect key="frame" x="17" y="0.0" width="59" height="30"/>
@@ -199,7 +206,7 @@ And of course gather as much life as possible.</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7J9-Uw-GNI" userLabel="LifeVerticalStackView">
-                                                <rect key="frame" x="226.5" y="0.0" width="93.5" height="80"/>
+                                                <rect key="frame" x="226.5" y="4" width="93.5" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJc-SI-Jad" userLabel="LifeTitleLabel">
                                                         <rect key="frame" x="25" y="0.0" width="44" height="30"/>
@@ -216,7 +223,7 @@ And of course gather as much life as possible.</string>
                                         </subviews>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5BL-Bj-pDi">
-                                        <rect key="frame" x="0.0" y="110" width="320" height="348"/>
+                                        <rect key="frame" x="0.0" y="108" width="320" height="348"/>
                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LEh-qU-FHR">
                                             <size key="itemSize" width="100" height="100"/>
@@ -250,7 +257,7 @@ And of course gather as much life as possible.</string>
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ul-T6-Uyg">
-                                        <rect key="frame" x="0.0" y="488" width="320" height="30"/>
+                                        <rect key="frame" x="0.0" y="476" width="320" height="42"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="Back">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -300,7 +307,7 @@ And of course gather as much life as possible.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="top" axis="vertical" distribution="equalSpacing" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="EtM-Ma-ZoY" userLabel="MainVerticalStackView">
-                                <rect key="frame" x="46" y="42" width="229" height="484"/>
+                                <rect key="frame" x="45.5" y="42" width="229" height="484"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="lAU-Wo-x3t" userLabel="scoreVerticalStackView">
                                         <rect key="frame" x="39" y="0.0" width="151" height="174"/>
@@ -384,16 +391,16 @@ And of course gather as much life as possible.</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="sKE-8X-UPh" userLabel="MainVerticalStackView">
-                                <rect key="frame" x="30" y="20" width="260" height="370"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sKE-8X-UPh" userLabel="MainVerticalStackView">
+                                <rect key="frame" x="30" y="20" width="260" height="340"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vl2-Iz-5as" userLabel="Option_1_StackView">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="160"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xe-sp-oe3" userLabel="Option 1">
-                                                <rect key="frame" x="21.5" y="0.0" width="217" height="80"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <state key="normal" title="Option 1: frog (default)">
+                                                <rect key="frame" x="80.5" y="0.0" width="99" height="80"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <state key="normal" title="Option 1">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -433,12 +440,12 @@ And of course gather as much life as possible.</string>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QHA-ll-fUb" userLabel="Option_2_StackView">
-                                        <rect key="frame" x="0.0" y="210" width="260" height="160"/>
+                                        <rect key="frame" x="0.0" y="180" width="260" height="160"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqJ-2m-KHg" userLabel="Option 2">
-                                                <rect key="frame" x="49" y="0.0" width="162" height="80"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                <state key="normal" title="Option 2: regular">
+                                                <rect key="frame" x="79" y="0.0" width="102" height="80"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <state key="normal" title="Option 2">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -483,9 +490,21 @@ And of course gather as much life as possible.</string>
                                     <constraint firstAttribute="trailing" secondItem="Vl2-Iz-5as" secondAttribute="trailing" id="rmD-2S-92V"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqo-28-ONm">
-                                <rect key="frame" x="123" y="502" width="74" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="selected: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAA-PP-FzD">
+                                <rect key="frame" x="113.5" y="417" width="93.5" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frog (default)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHj-bb-fRw" userLabel="Frog (default)">
+                                <rect key="frame" x="47.5" y="439" width="225" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqo-28-ONm">
+                                <rect key="frame" x="114" y="496" width="92" height="42"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Choose">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -497,7 +516,11 @@ And of course gather as much life as possible.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Qav-Xx-3TC" firstAttribute="top" secondItem="gqo-28-ONm" secondAttribute="bottom" constant="30" id="2JQ-jl-REO"/>
+                            <constraint firstItem="RAA-PP-FzD" firstAttribute="centerX" secondItem="tge-DI-qn5" secondAttribute="centerX" id="5yQ-cY-ax5"/>
                             <constraint firstItem="sKE-8X-UPh" firstAttribute="top" secondItem="vCw-fe-zV6" secondAttribute="bottom" id="9ON-NQ-OoE"/>
+                            <constraint firstItem="HHj-bb-fRw" firstAttribute="centerX" secondItem="tge-DI-qn5" secondAttribute="centerX" id="HEQ-91-QnQ"/>
+                            <constraint firstItem="gqo-28-ONm" firstAttribute="top" secondItem="HHj-bb-fRw" secondAttribute="bottom" constant="15" id="YbG-Uq-sc8"/>
+                            <constraint firstItem="gqo-28-ONm" firstAttribute="top" secondItem="RAA-PP-FzD" secondAttribute="bottom" constant="55" id="ebh-yk-t2x"/>
                             <constraint firstItem="gqo-28-ONm" firstAttribute="centerX" secondItem="tge-DI-qn5" secondAttribute="centerX" id="gak-Ev-VKV"/>
                             <constraint firstItem="sKE-8X-UPh" firstAttribute="centerX" secondItem="tge-DI-qn5" secondAttribute="centerX" id="whp-7U-DPM"/>
                         </constraints>
@@ -505,6 +528,7 @@ And of course gather as much life as possible.</string>
                     <connections>
                         <outlet property="option1Title" destination="0xe-sp-oe3" id="bnC-gr-rbz"/>
                         <outlet property="option2Title" destination="fqJ-2m-KHg" id="XLs-kF-J7l"/>
+                        <outlet property="selectLabel" destination="HHj-bb-fRw" id="IVr-Xd-rld"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="replaceCharacterToMainSegue" id="ZpF-56-NmN"/>
                     </connections>
                 </viewController>
@@ -525,7 +549,7 @@ And of course gather as much life as possible.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="rBX-8u-2RP" userLabel="MainVerticalStackView">
-                                <rect key="frame" x="29" y="125" width="263.5" height="318.5"/>
+                                <rect key="frame" x="28.5" y="102" width="263.5" height="364"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Record !!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95p-Cv-Jf3">
                                         <rect key="frame" x="0.0" y="0.0" width="263.5" height="48"/>
@@ -534,16 +558,16 @@ And of course gather as much life as possible.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d69-2x-Wfq" userLabel="NameVerticalStackView">
-                                        <rect key="frame" x="57" y="108" width="150" height="60.5"/>
+                                        <rect key="frame" x="56.5" y="108" width="150" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inf-fH-L9T">
-                                                <rect key="frame" x="32" y="0.0" width="86" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="12.5" y="0.0" width="125" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nkS-Nm-VyU" userLabel="Name text field">
-                                                <rect key="frame" x="0.0" y="30.5" width="150" height="30"/>
+                                                <rect key="frame" x="0.0" y="40" width="150" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="Ne7-7b-bgT"/>
                                                 </constraints>
@@ -554,18 +578,24 @@ And of course gather as much life as possible.</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="GoH-pP-L2s" userLabel="ButtonVerticalStackView">
-                                        <rect key="frame" x="108" y="228.5" width="48" height="90"/>
+                                        <rect key="frame" x="81.5" y="238" width="100" height="126"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jwp-St-GMP">
-                                                <rect key="frame" x="7" y="0.0" width="34" height="30"/>
-                                                <state key="normal" title="Save"/>
+                                                <rect key="frame" x="15" y="0.0" width="70" height="48"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="saveClicked:" destination="1rq-UL-11y" eventType="touchUpInside" id="Kac-P6-b5X"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zwa-Tq-BNy">
-                                                <rect key="frame" x="0.0" y="60" width="48" height="30"/>
-                                                <state key="normal" title="Cancel"/>
+                                                <rect key="frame" x="0.0" y="78" width="100" height="48"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="cancelClicked:" destination="1rq-UL-11y" eventType="touchUpInside" id="CfD-YS-ijc"/>
                                                 </connections>
@@ -602,7 +632,7 @@ And of course gather as much life as possible.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record Table" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCO-7z-m6x" userLabel="title">
-                                <rect key="frame" x="38" y="40" width="245.5" height="48"/>
+                                <rect key="frame" x="37.5" y="40" width="245.5" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -749,11 +779,13 @@ And of course gather as much life as possible.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="XDn-c4-ORK" firstAttribute="width" secondItem="dLY-cY-hzS" secondAttribute="width" id="63P-fS-u3G"/>
-                            <constraint firstItem="XDn-c4-ORK" firstAttribute="centerY" secondItem="dLY-cY-hzS" secondAttribute="centerY" id="BO7-i3-TFf"/>
-                            <constraint firstItem="XDn-c4-ORK" firstAttribute="height" secondItem="dLY-cY-hzS" secondAttribute="height" id="CRJ-v1-8GY"/>
+                            <constraint firstItem="XDn-c4-ORK" firstAttribute="top" secondItem="dLY-cY-hzS" secondAttribute="top" id="4vc-ca-TMP"/>
+                            <constraint firstItem="XDn-c4-ORK" firstAttribute="leading" secondItem="dLY-cY-hzS" secondAttribute="leading" id="Pa5-hb-GFj"/>
                             <constraint firstItem="aNq-8V-TMs" firstAttribute="top" secondItem="jAq-ag-M3F" secondAttribute="bottom" id="XLA-lr-0sp"/>
-                            <constraint firstItem="XDn-c4-ORK" firstAttribute="centerX" secondItem="dLY-cY-hzS" secondAttribute="centerX" id="ghm-lN-yeq"/>
+                            <constraint firstAttribute="trailing" secondItem="XDn-c4-ORK" secondAttribute="trailing" id="XOL-bd-3D8"/>
+                            <constraint firstItem="XDn-c4-ORK" firstAttribute="centerX" secondItem="dLY-cY-hzS" secondAttribute="centerX" id="a33-Ly-AIK"/>
+                            <constraint firstItem="XDn-c4-ORK" firstAttribute="centerY" secondItem="dLY-cY-hzS" secondAttribute="centerY" id="eNN-wW-NGi"/>
+                            <constraint firstAttribute="bottom" secondItem="XDn-c4-ORK" secondAttribute="bottom" id="upR-Dp-WOG"/>
                             <constraint firstItem="jAq-ag-M3F" firstAttribute="centerX" secondItem="dLY-cY-hzS" secondAttribute="centerX" id="vBn-zH-z4a"/>
                         </constraints>
                     </view>
@@ -775,9 +807,9 @@ And of course gather as much life as possible.</string>
         <image name="life2" width="516" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SA4-dK-BiM"/>
-        <segue reference="73P-xR-1sb"/>
-        <segue reference="QlS-W6-oYK"/>
-        <segue reference="pWb-iu-kKz"/>
+        <segue reference="TqM-8t-gfK"/>
+        <segue reference="GAi-Si-EmH"/>
+        <segue reference="C4i-zA-pex"/>
+        <segue reference="bqm-zj-C6A"/>
     </inferredMetricsTieBreakers>
 </document>

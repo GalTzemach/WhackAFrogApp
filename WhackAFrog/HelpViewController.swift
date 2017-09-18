@@ -10,11 +10,16 @@ import UIKit
 
 class HelpViewController: UIViewController {
 
+    // outlets
+    @IBOutlet weak var textView: UITextView!
+    
     var helpDescription: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        textView.backgroundColor = UIColor.clear
+        
         // set background
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
     }

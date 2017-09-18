@@ -22,7 +22,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let numOfRow: Int = 5
     let numOfCol: Int = 4
-    let durationGame: Int = 30
+    let durationGame: Int = 10 // Sec
     
     weak var timer: Timer?
     var gameLogic: GameLogic?
@@ -48,9 +48,6 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         } else {
             images = images1
         }
-        
-        // record table
-        
         
         let screenWidth: Int = Int(UIScreen.main.bounds.width)
         let itemSize = screenWidth / numOfCol - (20 + 40 / numOfCol) // 4 element each row
@@ -79,8 +76,23 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super .viewWillDisappear(true)
         print("timer invalitade")
         timer?.invalidate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(true)
+        
+        currentTime = 0
+        score = 0
+        totalLife = 3
+        
+        gameLogic = GameLogic.init()
+        
+        scoreLabel.text = "0"
+        timeLabel.text = "0"
+        lifeLabel.text = "3"
     }
     
     override func didReceiveMemoryWarning() {
