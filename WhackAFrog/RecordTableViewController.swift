@@ -25,7 +25,10 @@ class RecordTableViewController: UIViewController, UITableViewDelegate, UITableV
 
         // update recordArr from userDefault
         let recordArrData = mUserDefaults.data(forKey: "recordArr")
-        recordArr = NSKeyedUnarchiver.unarchiveObject(with: recordArrData!) as? [Record] ?? [Record]()
+        
+        if recordArrData != nil {
+            recordArr = NSKeyedUnarchiver.unarchiveObject(with: recordArrData!) as? [Record] ?? [Record]()
+        }
     }
 
     override func didReceiveMemoryWarning() {

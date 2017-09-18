@@ -34,7 +34,11 @@ class NewRecordViewController: UIViewController, CLLocationManagerDelegate {
         
         // update recordArr from userDefault
         let recordArrData = mUserDefaults.data(forKey: "recordArr")
-        recordArr = NSKeyedUnarchiver.unarchiveObject(with: recordArrData!) as? [Record] ?? [Record]()
+        
+        if recordArrData != nil {
+            recordArr = NSKeyedUnarchiver.unarchiveObject(with: recordArrData!) as? [Record] ?? [Record]()
+        }
+        
         
         score = mUserDefaults.integer(forKey: "recentScore")
     }

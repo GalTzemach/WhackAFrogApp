@@ -86,7 +86,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         currentTime = 0
         score = 0
-        totalLife = 3
+        totalLife = 0
         
         gameLogic = GameLogic.init()
         
