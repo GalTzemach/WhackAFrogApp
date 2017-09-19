@@ -34,6 +34,5 @@ class HelpViewController: UIViewController {
     @IBAction func backClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 
 }

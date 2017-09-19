@@ -38,13 +38,6 @@ class MainViewController: UIViewController {
         exit(0)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "mainToGameSegue") {
-//            let vc = segue.destination as! GameViewController
-//            vc.typeCharacter = self.typeCharacter
-//        }
-//    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

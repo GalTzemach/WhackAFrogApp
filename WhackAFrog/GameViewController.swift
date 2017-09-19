@@ -71,7 +71,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidAppear(_ animated: Bool) {
         
-        /// in viewDidLoad
+        // start main timer
         timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(mainTimerReady), userInfo: nil, repeats: true)
     }
     
@@ -277,7 +277,7 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     lifeLabel.text = String(describing: gameLogic!.life)
                     gameLogic?.gameBoard.currentBad -= 1
                 } else {
-                    gameOver() /// change name to finish
+                    gameOver()
                 }
                 
                 // animation for bad click
@@ -314,10 +314,5 @@ class GameViewController: UIViewController, UICollectionViewDelegate, UICollecti
             gameLogic?.gameBoard.tailMatrix[indexPath.row].invisible()
             gameLogic?.gameBoard.currentTotalVisible -= 1
         }
-    }
-    
-    deinit {
-        /// delete
-        print("gameViewController - dead")
     }
 }

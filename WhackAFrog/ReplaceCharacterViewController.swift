@@ -11,23 +11,18 @@ import UIKit
 class ReplaceCharacterViewController: UIViewController {
 
     // outlets
-    /// delete Title
     @IBOutlet weak var option1Title: UIButton!
     @IBOutlet weak var option2Title: UIButton!
     @IBOutlet weak var selectLabel: UILabel!
     
     var typeCharacter: Int = 1
-    
     let mUserDefaults = UserDefaults.standard
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // set background
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-        
-        selectLabel.text = selectLabel.text
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,25 +35,19 @@ class ReplaceCharacterViewController: UIViewController {
         typeCharacter = 1
         selectLabel.text = "Frog"
         selectLabel.textColor = UIColor.blue
-        /// change color & size
     }
     
     @IBAction func option2Clicked(_ sender: Any) {
         typeCharacter = 2
         selectLabel.text = "Basic"
         selectLabel.textColor = UIColor.blue
-        /// change color & size
     }
     
     @IBAction func chooseClicked(_ sender: Any) {
-        
         mUserDefaults.set(typeCharacter, forKey: "typeCharacter")
         self.dismiss(animated: true, completion: nil)
-        
-        ///performSegue(withIdentifier: "replaceCharacterToMainSegue", sender: self)
     }
     
-
     /*
     // MARK: - Navigation
 

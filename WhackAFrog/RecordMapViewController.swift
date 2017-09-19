@@ -12,22 +12,18 @@ import CoreLocation
 
 class RecordMapViewController: UIViewController {
 
+    // outlets
+    @IBOutlet weak var map: MKMapView!
+    
     let mUserDefaults = UserDefaults.standard
     
-    /// var locationToShow: CLLocationCoordinate2D?
-    
-    // outlets
-    @IBOutlet weak var map: MKMapView!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let homeLocation = CLLocationCoordinate2D(latitude: 31.753879, longitude: 34.988457)
+        /// let homeLocation = CLLocationCoordinate2D(latitude: 31.753879, longitude: 34.988457)
         
         let locationToShow = CLLocationCoordinate2DMake(mUserDefaults.double(forKey: "latitudeToShow"), mUserDefaults.double(forKey: "longitudeToShow"))
-        
-        print(locationToShow)
-        print(homeLocation)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
         let region = MKCoordinateRegion(center: locationToShow, span: span)
@@ -48,7 +44,6 @@ class RecordMapViewController: UIViewController {
     
     // actions - (buttons clicked)
     @IBAction func backClicked(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -61,5 +56,5 @@ class RecordMapViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

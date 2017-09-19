@@ -14,18 +14,12 @@ class RecordTableViewController: UIViewController, UITableViewDelegate, UITableV
     let mUserDefaults = UserDefaults.standard
     var recordArr: [Record] = [Record]()
     
-    /// var minimalScore: Int = 0 /// change 0 to real value
-    /// var recordArr = [Record]()
-
-    
-    // outlets
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // update recordArr from userDefault
         let recordArrData = mUserDefaults.data(forKey: "recordArr")
-        
         if recordArrData != nil {
             recordArr = NSKeyedUnarchiver.unarchiveObject(with: recordArrData!) as? [Record] ?? [Record]()
         }
@@ -53,8 +47,6 @@ class RecordTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let tempLocation = CLLocationCoordinate2DMake(Double(recordArr[indexPath.row].latitude)!, Double(recordArr[indexPath.row].longitude)!)
-        
         mUserDefaults.set(Double(recordArr[indexPath.row].latitude), forKey: "latitudeToShow")
         mUserDefaults.set(Double(recordArr[indexPath.row].longitude), forKey: "longitudeToShow")
         mUserDefaults.set(recordArr[indexPath.row].name, forKey: "nameToShow")
@@ -63,14 +55,11 @@ class RecordTableViewController: UIViewController, UITableViewDelegate, UITableV
         performSegue(withIdentifier: "recordTableToRecordMapSegue", sender: self)
     }
     
-    
     // actions - (buttons clicked)
     @IBAction func backClicked(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -80,5 +69,5 @@ class RecordTableViewController: UIViewController, UITableViewDelegate, UITableV
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

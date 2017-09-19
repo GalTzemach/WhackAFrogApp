@@ -11,16 +11,16 @@ import CoreLocation
 
 class NewRecordViewController: UIViewController, CLLocationManagerDelegate {
 
-    let mUserDefaults = UserDefaults.standard
+    // outlets
+    @IBOutlet weak var nameTextField: UITextField!
     
+    let mUserDefaults = UserDefaults.standard
+
     let LocationManager = CLLocationManager()
     var myLocation: CLLocation = CLLocation.init()
     
     var recordArr: [Record] = [Record]()
     var score: Int = 0
-    
-    // outlets
-    @IBOutlet weak var nameTextField: UITextField!
     
 
     override func viewDidLoad() {
@@ -38,13 +38,10 @@ class NewRecordViewController: UIViewController, CLLocationManagerDelegate {
         if recordArrData != nil {
             recordArr = NSKeyedUnarchiver.unarchiveObject(with: recordArrData!) as? [Record] ?? [Record]()
         }
-        
-        
         score = mUserDefaults.integer(forKey: "recentScore")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       
         myLocation = locations[0]
     }
 
@@ -77,12 +74,9 @@ class NewRecordViewController: UIViewController, CLLocationManagerDelegate {
         var recordIsAdded = false
         
         if recordArr.count == 0 {
-            
             recordArr.append(recordToAdd)
             recordIsAdded = true
-            
         } else {
-            
             for i in 0...recordArr.count - 1 {
                 if score > recordArr[i].score {
                     recordArr.insert(recordToAdd, at: i)

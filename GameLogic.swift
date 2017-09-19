@@ -20,11 +20,9 @@ class GameLogic {
     
     
     init() {
-        
         self.gameBoard = GameBoard()
         self.score = 0
         self.life = 3
     }
-    
-    
+
 }
